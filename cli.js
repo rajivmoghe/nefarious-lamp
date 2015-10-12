@@ -45,7 +45,7 @@ fs.readFileAsync(config)
             stderr.write('\n Writing to "' + filename + '" ...  ');
 
             outputStream = fs.createWriteStream(filename);
-            onEnd = function(){ stderr.write('Done!\n'); };
+            onEnd = function(){ stderr.write('Done!\n\n'); };
         } else {
             outputStream = process.stdout;
             onEnd = Function.prototype;    
