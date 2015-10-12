@@ -34,4 +34,6 @@ stdout for further redirections:
 
 ```bash
 packtpub-download -c <path_to_config_file> [-t "pdf|epub|mobi" -o <use-stdout> -f "books_dir"]
+
+node cli.js -c options.json
 ```
