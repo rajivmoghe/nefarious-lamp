@@ -8,8 +8,11 @@ var Promise = require('bluebird'),
 
 var downloadFreeEbook = require('./index.js');
 
+var home = process.env.HOME || process.env.USERPROFILE;
+
 var useStdout    = argv.o || false,
     downloadType = argv.t || 'pdf',
+    baseFilePath = argv.f || '/Desktop/',
     config       = argv.c;
 
 var stderr = process.stderr;
@@ -20,7 +23,13 @@ stderr.write('=====================================================\n');
 fs.readFileAsync(config)
     .then(JSON.parse)
     .then(function complete(config){
+        baseFilePath = config.basedir || baseFilePath;
+        if(baseFilePath[0] === '/')
+            baseFilePath = home + baseFilePath;
+        else
+            baseFilePath = home + '/' + baseFilePath;
         stderr.write(' Username: ' + config.username + '\n');
+        stderr.write(' File write at: ' + baseFilePath + '\n');
 
         config.downloadType = downloadType;
         return downloadFreeEbook(config);
@@ -32,7 +41,7 @@ fs.readFileAsync(config)
         var outputStream, onEnd;
 
         if (!useStdout) {
-            var filename = ebook.title + '.' + downloadType;
+            var filename = baseFilePath + ebook.title + '.' + downloadType;
             stderr.write('\n Writing to "' + filename + '" ...  ');
 
             outputStream = fs.createWriteStream(filename);
