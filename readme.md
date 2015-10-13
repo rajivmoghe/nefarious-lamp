@@ -20,7 +20,7 @@ credentials. Example of configuration:
 ```json
 {
   "username": "<put your username here>",
-  "password": "<put your password here>"
+  "password": "<put your password here>",
   "basedir" : "<optional: books repo dir>"
 }        
 ```
