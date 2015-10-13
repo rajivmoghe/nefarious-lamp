@@ -7,3 +7,4 @@ node_modules
 
 # private stuff
 config.json
+.DS_Store
