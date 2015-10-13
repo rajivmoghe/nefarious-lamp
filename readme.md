@@ -21,7 +21,7 @@ credentials. Example of configuration:
 {
   "username": "<put your username here>",
   "password": "<put your password here>"
-  "basedir": "<optional: books repo dir>"
+  "basedir" : "<optional: books repo dir>"
 }        
 ```
 
